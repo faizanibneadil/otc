@@ -5,7 +5,7 @@ import { snakeCamelMapper } from "@electric-sql/client"
 export type RealtimeMessage = {
     id: number | string
     message: string
-    messageById: number | string
+    messageBy: string   // pehle: messageById: number | string
     roomId: number | string
     createdAt: Date
 }

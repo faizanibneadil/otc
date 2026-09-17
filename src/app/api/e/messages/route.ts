@@ -39,7 +39,7 @@ export async function GET(request: Request) {
 
     electricURL.searchParams.set(
       "columns",
-      "id,message,message_by_id,room_id,created_at",
+      "id,message,message_by,room_id,created_at",
     )
 
     electricURL.searchParams.set(

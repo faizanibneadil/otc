@@ -1,6 +1,7 @@
 import { getPayload } from "payload"
 import config from "@payload-config"
 import { Room } from "@/components/Room"
+import { ExpiredChatState } from "@/components/ExpiredChatState"
 
 const ROOM_INACTIVITY_LIMIT_MS = 10 * 60 * 1000
 
@@ -20,11 +21,7 @@ export default async function ChatPage({ params }: ChatPageProps) {
     }).catch(() => null)
 
     if (!room) {
-        return (
-            <div className="flex h-150 items-center justify-center">
-                <p className="text-sm text-muted-foreground">This chat does not exist.</p>
-            </div>
-        )
+        return <ExpiredChatState reason="not-found" />
     }
 
     // "Last activity" = agar koi message he to uska createdAt,
@@ -44,12 +41,8 @@ export default async function ChatPage({ params }: ChatPageProps) {
         Date.now() - new Date(lastActivityAt).getTime() >= ROOM_INACTIVITY_LIMIT_MS
 
     if (isExpired) {
-        return (
-            <div className="flex h-150 items-center justify-center">
-                <p className="text-sm text-muted-foreground">This chat link has expired.</p>
-            </div>
-        )
+        return <ExpiredChatState reason="expired" />
     }
 
-    return <Room roomId={room.id} />
+    return <Room roomId={room.id} lastActivityAt={lastActivityAt} />
 }

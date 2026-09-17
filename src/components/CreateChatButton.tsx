@@ -39,7 +39,7 @@ export function CreateChatButton() {
             disabled={creating}
             className="rounded-md bg-black px-6 py-3 text-white disabled:opacity-50"
         >
-            {creating ? "Creating..." : "Create Chat"}
+            {creating ? "Creating..." : "Start Chat"}
         </button>
     )
 }

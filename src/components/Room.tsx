@@ -119,7 +119,7 @@ export function Room({
                     room: roomId,
                 }),
             })
-
+            // console.log(await response.json(), "create message")
             if (!response.ok) {
                 const error = await response.json()
                 throw new Error(

@@ -17,12 +17,12 @@ export function CreateChatButton() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({}), // Rooms ki koi required field nahi, khali room ban jayega
             })
-
             if (!response.ok) {
                 throw new Error("Failed to create chat")
             }
+            // console.log(await response.json())
 
-            const { doc } = await response.json()
+            const { doc } = await response?.json()
 
             // Naya room ban gaya — seedha uske chat page pr le jate hen,
             // wahin username poocha jayega (Room component khud handle karta he)

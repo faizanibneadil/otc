@@ -182,9 +182,9 @@ export interface Room {
  */
 export interface Message {
   id: number;
-  message?: string | null;
-  message_by?: (number | null) | User;
-  room?: (number | null) | Room;
+  message: string;
+  message_by: string;
+  room: number | Room;
   updatedAt: string;
   createdAt: string;
 }
